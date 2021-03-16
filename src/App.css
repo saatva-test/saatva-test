@@ -1,38 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Source+Sans+Pro&display=swap');
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #fff;
+  min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  padding: 0 20px;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.body_heading {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.cartIcon__count {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -35px;
+  right: -15px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #c19678;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.cartIcon {
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.btn-outline-primary {
+  color: #6b6257;
+  border-color: #d2d2d2;
+  background-color: #fff;
+}
+
+.btn-check:checked+.btn-outline-primary {
+  color: #fff;
+  background-color: #a6a19a;
+  border-color: #d2d2d2;
+}
+
+.btn-check:active+.btn-outline-primary {
+  color: #fff;
+  background-color: #a6a19a;
+  border-color: #d2d2d2;
+  box-shadow: none;
+}
+
+.btn-outline-primary:active {
+  color: #6b6257;
+  background-color: #f0efee;
+  border-color: #d2d2d2;
+  box-shadow: none;
+}
+
+.btn-outline-primary:hover {
+  color: #6b6257;
+  background-color: #f0efee;
+  border-color: #d2d2d2;
+}
+
+.btn-check:focus+.btn{
+  outline: none;
+  box-shadow: none;
+}
+
+.body-text {
+  font-family: "Questrial";
+}
+
+.type-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qtyBtn {
+  background-color: #d5aa63;
+  border-radius: 0;
+  color: #fff;
+}
+
+.qtyBtn:active, .qtyBtn:hover {
+  background-color: #e2c492;
+  color: #fff;
+}
+
+.qtyBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 576px) {
+  .type-btn-text-sm {
+    font-size: 0.7rem;
   }
 }

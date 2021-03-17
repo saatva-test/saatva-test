@@ -55,8 +55,8 @@ function App() {
         </button>
       </div>
     </header>
-      <div className="row pt-5">
-        <div className="col-lg-8 px-5 py-4">
+      <div className="row">
+        <div className="col-xl-8 px-4 py-4 px-lg-5 py-lg-5 px-md-5 py-md-5">
           {type &&
             <img className="w-100" src={require("./images/"+products.mattresses[type].imageFileName)} alt={products.mattresses[type].name} />
           }
@@ -66,62 +66,72 @@ function App() {
           
         </div>
         
-        <div className="col-lg-4 px-5 py-4">
-          <div className="row py-4">
-            <span className="body_heading px-0">Choose Your Mattress</span>
+        <div className="col-xl-4 px-4 py-2 px-lg-5 py-lg-5 px-md-5 py-md-0">
+          <div className="row pb-4 pb-lg-5 pb-md-3">
+            <span className="body_heading">Choose Your Mattress</span>
           </div>
 
-          <div className="row">
-            <span className="type-select-label px-0 body-text">SELECT MATTRESS TYPE</span>
+          <div className="row pb-2">
+            <span className="type-select-label body-text">SELECT MATTRESS TYPE</span>
           </div>
 
           <div className="row pb-4">
-            <div className="btn-group type-select px-0 col-lg-9 col-md-8" role="group">
+            <div className="btn-group type-select col-lg-9 col-md-8" role="group">
               {Object.entries(productTypes).map(([key, value]) => {
                 return (
                 <Fragment key={key}>
                   <input type="radio" className="btn-check" name="btnradio" id={"btn_"+key} autoComplete="off" onClick={()=>{
                     setType(key);
                   }}/>
-                  <label className="btn btn-outline-primary body-text type-btn-text-sm col-3" htmlFor={"btn_"+key} data-testid={"typeBtn_"+key}>{value.name}</label>
+                  <label className="btn btn-outline-primary body-text type-btn-text col-3" htmlFor={"btn_"+key} data-testid={"typeBtn_"+key}>{value.name}</label>
                 </Fragment>)
               })}
             </div>
           </div>
           
           {type &&
-            <div className="row">
-              <Rating
-                  className="px-0 pb-2 col-lg-9 col-md-8"
+          <Fragment>
+            <div className="row pb-2">
+              <div className="type-details col-lg-9 col-md-8">
+                <span className="body-text">Customer Rating</span>
+                <Rating
+                  className="type-details"
                   name="half-rating-read"
                   precision={0.10}
                   readOnly
                   value={products.mattresses[type].reviewRating}
                 />
-              <div className="pb-2 px-0 type-details col-lg-9 col-md-8">
-                <span className="px-0 body-text"><strong>{products.mattresses[type].name}</strong></span>
-                <span className="px-0 body-text">${products.mattresses[type].price}</span>
               </div>
             </div>
+            <div className="row pb-2">
+              <div className="type-details col-lg-9 col-md-8">
+                <span className="body-text"><strong>{products.mattresses[type].name}</strong></span>
+                <span className="body-text">${products.mattresses[type].price}</span>
+              </div>
+            </div>
+          </Fragment>
           }
 
           {showDisableBtnMsg && !type &&
-            <div className="row mb-0">
-              <span className="px-2 mb-0 body-text col-lg-9 col-md-8 alert alert-dark">Select mattress type</span>
+            <div className="row pb-4">
+              <div className="col-lg-9 col-md-8">
+                <div className="mb-0 body-text alert alert-dark">Select mattress type first</div>
+              </div>
             </div>
           }
           
-          <div className="row py-4">
-            {type &&
-              <button type="button" className="btn qtyBtn px-0 body-text col-lg-9 col-md-8" data-testid="qtyBtn" onClick={(e)=>addCartClickHandler(e)}>Add to Cart</button>
-            }
-            {!type &&
-              <div onClick={(e)=>addCartClickHandler(e)} className="disabledBtnDiv col-lg-9 col-md-8 px-0">
-                <button type="button" className="btn qtyBtn body-text w-100 disabled">Add to Cart</button>
-              </div>
-            }
+          <div className="row">
+            <div className="col-lg-9 col-md-8">
+              {type &&
+                <button type="button" className="btn qtyBtn body-text w-100" data-testid="qtyBtn" onClick={(e)=>addCartClickHandler(e)}>Add to Cart</button>
+              }
+              {!type &&
+                <div onClick={(e)=>addCartClickHandler(e)} className="disabledBtnDiv">
+                  <button type="button" className="btn qtyBtn body-text disabled w-100">Add to Cart</button>
+                </div>
+              }
+            </div>
           </div>
-
         </div>
       </div>
   </div>
